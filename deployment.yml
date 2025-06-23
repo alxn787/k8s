@@ -6,14 +6,21 @@ spec:
   replicas: 3
   selector:
     matchLabels:
-      app: nginx
+      app: k8test
   template:
     metadata:
       labels:
-        app: nginx
+        app: k8test
     spec:
       containers:
-      - name: nginx
-        image: mongo:latest
+      - name: postgres
+        image: postgres:latest
         ports:
-        - containerPort: 80
+        - containerPort: 5432
+
+      - name: k8test
+        image: alxn787/k8test:latest
+        ports:
+        - containerPort: 3000 
+
+      
